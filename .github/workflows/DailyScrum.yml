@@ -1,0 +1,29 @@
+name: Discord DailyScrum alarm
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+
+jobs:
+  daily-scrum:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if today is a weekday
+        run: |
+          day=$(date +%u)
+          if [ "$day" -ge 6 ]; then
+            echo "Today is a weekend. Skipping the workflow."
+            exit 0
+          fi
+      - name: Discord Webhook Action
+        uses: tsickert/discord-webhook@v5.3.0
+        with:
+          webhook-url: ${{ secrets.WEBHOOK_URL }}
+          content: |
+            ⏰ 데일리 스크럼 ⏰
+
+            안녕하세요, 오렌지 폭주족! 🍊
+            오늘도 활기차게 하루를 시작해 봅시다!!
+            데일리 스크럼을 잊지 마시고, **오전 10시 전까지** 스레드에 작성 부탁드립니다! 📝
+
+            모두의 멋진 하루를 응원합니다! 💪
