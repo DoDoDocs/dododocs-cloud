@@ -18,7 +18,7 @@ jobs:
       - name: Discord Webhook Action
         uses: tsickert/discord-webhook@v5.3.0
         with:
-          webhook-url: ${{ secrets.WEBHOOK_URL }}
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
           content: |
             ⏰ 데일리 스크럼 ⏰
 
