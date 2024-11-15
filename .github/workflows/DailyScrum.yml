@@ -2,7 +2,8 @@ name: Discord DailyScrum alarm
 
 on:
   schedule:
-    - cron: "0 9 * * *"
+    - cron: "0 0 * * *" # 오전 9시
+  workflow_dispatch:  # 수동 실행 추가
 
 jobs:
   daily-scrum:
