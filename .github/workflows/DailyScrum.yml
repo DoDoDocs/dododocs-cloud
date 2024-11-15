@@ -21,7 +21,7 @@ jobs:
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
           content: |
-            ⏰ 데일리 스크럼 ⏰
+            ## ⏰ 데일리 스크럼 ⏰
 
             안녕하세요, 오렌지 폭주족! 🍊
             오늘도 활기차게 하루를 시작해 봅시다!!
