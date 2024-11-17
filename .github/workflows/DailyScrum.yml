@@ -2,13 +2,19 @@ name: Discord DailyScrum alarm
 
 on:
   schedule:
-    - cron: "0 0 * * *" # 오전 9시
+    - cron: "0 0 * * *" # UTC 기준 자정 (KST 오전 9시)
   workflow_dispatch:  # 수동 실행 추가
 
 jobs:
   daily-scrum:
     runs-on: ubuntu-latest
     steps:
+      - name: Set timezone to KST
+        run: sudo timedatectl set-timezone Asia/Seoul
+
+      - name: Print current time (KST)
+        run: date
+
       - name: Check if today is a weekday
         run: |
           day=$(date +%u)
@@ -16,7 +22,9 @@ jobs:
             echo "Today is a weekend. Skipping the workflow."
             exit 0
           fi
+
       - name: Discord Webhook Action
+        if: success() # 이전 스텝이 성공한 경우에만 실행
         uses: tsickert/discord-webhook@v5.3.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
