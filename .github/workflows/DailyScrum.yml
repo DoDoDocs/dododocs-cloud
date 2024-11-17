@@ -16,15 +16,19 @@ jobs:
         run: date
 
       - name: Check if today is a weekday
+        id: check_weekday
         run: |
           day=$(date +%u)
           if [ "$day" -ge 6 ]; then
-            echo "Today is a weekend. Skipping the workflow."
+            echo "Weekend detected."
+            echo "::set-output name=weekend::true"
             exit 0
+          else
+            echo "::set-output name=weekend::false"
           fi
 
       - name: Discord Webhook Action
-        if: success() # 이전 스텝이 성공한 경우에만 실행
+        if: steps.check_weekday.outputs.weekend == 'false'
         uses: tsickert/discord-webhook@v5.3.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
