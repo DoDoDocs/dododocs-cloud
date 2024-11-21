@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ai-deploy
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ai-deploy
+    spec:
+      containers:
+      - name: ai-app
+        image: hyesushim/dododocs-ai:latest
