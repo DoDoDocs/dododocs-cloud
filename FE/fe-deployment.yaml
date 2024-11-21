@@ -15,3 +15,5 @@ spec:
       containers:
       - name: fe-app
         image: hyesushim/dododocs-fe:latest
+        ports:
+            - containerPort: 3000
