@@ -166,3 +166,73 @@ resource "aws_route_table_association" "private_c" {
   subnet_id      = aws_subnet.private_c.id
   route_table_id = aws_route_table.private_a.id
 }
+
+
+resource "aws_security_group" "alb_sg" {
+  name        = "alb-sg"
+  description = "Allow HTTPS traffic to ALB"
+  vpc_id      = aws_vpc.main.id
+
+  # HTTPS 접근 허용
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "dododocs-alb-sg"
+  }
+}
+
+
+# Nginx EC2 Instance
+resource "aws_security_group" "nginx_sg" {
+  name        = "nginx-sg"
+  description = "Allow HTTP and SSH traffic for Nginx"
+  vpc_id      = aws_vpc.main.id
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "dododocs-nginx-sg"
+  }
+}
+
+# ALB에서 Nginx로 트래픽 허용
+resource "aws_security_group_rule" "nginx_ingress_from_alb" {
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  security_group_id = aws_security_group.nginx_sg.id
+  source_security_group_id = aws_security_group.alb_sg.id
+}
+
+resource "aws_instance" "nginx_instance" {
+  ami                    = "ami-0de20b1c8590e09c5"
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.private_a.id
+  key_name               = "dododocs-key"
+  vpc_security_group_ids = [aws_security_group.nginx_sg.id]
+  associate_public_ip_address = false
+
+  depends_on = [aws_security_group.nginx_sg]
+  
+  tags = {
+    Name = "dododocs-nginx-instance"
+  }
+}
