@@ -1,14 +1,14 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: frontend-ingress
+  name: dododocs-ingress
   annotations:
     kubernetes.io/ingress.class: "alb"
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
 spec:
   rules:
-  - host: dododocs.example.com
+  - host: dododocs.com
     http:
       paths:
       - path: /
@@ -16,5 +16,15 @@ spec:
         backend:
           service:
             name: frontend-service
+            port:
+              number: 80
+  - host: monitoring.dododocs.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-service
             port:
               number: 80
