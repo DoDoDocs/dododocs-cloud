@@ -231,7 +231,7 @@ resource "aws_instance" "nginx_instance" {
   associate_public_ip_address = false
 
   depends_on = [aws_security_group.nginx_sg]
-  
+  sla
   tags = {
     Name = "dododocs-nginx-instance"
   }
