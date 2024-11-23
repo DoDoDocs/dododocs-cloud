@@ -15,3 +15,8 @@ spec:
       containers:
       - name: ai-app
         image: hyesushim/dododocs-ai:latest
+        ports:
+          - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: ai-config 

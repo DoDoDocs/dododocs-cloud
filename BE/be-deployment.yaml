@@ -15,3 +15,8 @@ spec:
       containers:
       - name: be-app
         image: hyesushim/dododocs-be:latest
+        ports:
+          - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: be-config 
