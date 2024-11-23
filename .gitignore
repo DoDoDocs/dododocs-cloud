@@ -23,6 +23,8 @@ argocd/**
 
 # 기타 환경 파일
 .kube/
+ENV/
 
 *.pem
+
 
