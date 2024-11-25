@@ -18,6 +18,15 @@ spec:
             name: fe-service
             port:
               number: 80
+  - http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: be-service
+            port:
+              number: 80
   # - host: dododocs.com
   #   http:
   #     paths:
