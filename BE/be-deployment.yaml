@@ -20,3 +20,12 @@ spec:
         envFrom:
         - configMapRef:
             name: be-config 
+        volumeMounts:
+          - mountPath: /etc/secrets
+            name: be-secret-volume
+            readOnly: true
+
+volumes:
+  - name: be-secret-volume
+    secret:
+      secretName: be-secret

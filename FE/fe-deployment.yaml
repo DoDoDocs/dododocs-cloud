@@ -17,9 +17,6 @@ spec:
         image: hyesushim/dododocs-fe:latest
         ports:
             - containerPort: 3000
-        env:
-        - name: REACT_APP_API_BASE_URL
-          valueFrom:
-            configMapKeyRef:
-              name: fe-config
-              key: REACT_APP_API_BASE_URL
+        envFrom:
+        - configMapRef:
+            name: fe-config 
