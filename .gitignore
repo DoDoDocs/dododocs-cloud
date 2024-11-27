@@ -23,7 +23,10 @@ argocd/**
 
 # 기타 환경 파일
 .kube/
-Secret/
+
+# Secret 파일 제외
+*.secret.yaml
+*secret.yaml
 
 *.pem
 

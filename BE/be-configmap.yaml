@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: be-config
+  namespace: backend
 data:
   AUTHORIZE_URI: https://github.com/login/oauth/authorize
   AWS_REGION: ap-northeast-2
@@ -13,4 +14,4 @@ data:
   REDIRECT_URI: http://dododocs.com/callback/github
   TOKEN_URL: https://github.com/login/oauth/access_token
   USER_URI: https://api.github.com/user
-  AI_BASIC_URL: http://ai-service
+  AI_BASIC_URL: http://ai-service.ai.svc.cluster.local
