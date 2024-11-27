@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: dododocs-ingress
-  namespace: infra
+  namespace: frontend
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
@@ -17,6 +17,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: fe-service.frontend
+            name: fe-service
             port:
               number: 80
