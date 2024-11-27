@@ -25,8 +25,7 @@ spec:
           - mountPath: /etc/secrets
             name: be-secret-volume
             readOnly: true
-
-volumes:
-  - name: be-secret-volume
-    secret:
-      secretName: be-secret
+      volumes:
+      - name: be-secret-volume
+        secret:
+          secretName: be-secret
