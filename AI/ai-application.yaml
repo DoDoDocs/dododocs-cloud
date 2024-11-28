@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ai
+  namespace: myargocd
+spec:
+  project: dododocs
+  source:
+    repoURL: https://github.com/DoDoDocs/dododocs-cloud.git
+    targetRevision: develop
+    path: ./AI
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ai
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
