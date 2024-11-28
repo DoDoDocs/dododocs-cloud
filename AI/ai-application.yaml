@@ -3,6 +3,10 @@ kind: Application
 metadata:
   name: ai
   namespace: myargocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: hyeushim/dododocs-ai
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/update-strategy: latest
 spec:
   project: dododocs
   source:
