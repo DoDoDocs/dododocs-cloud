@@ -6,7 +6,6 @@ namespace: backend
 resources:
   - be-deployment.yaml
   - be-service.yaml
-  - be-application.yaml
 
 images:
   - name: hyesushim/dododocs-be

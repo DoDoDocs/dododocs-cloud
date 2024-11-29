@@ -6,7 +6,6 @@ namespace: ai
 resources:
   - ai-deployment.yaml
   - ai-service.yaml
-  - ai-application.yaml
 
 images:
   - name: hyesushim/dododocs-ai

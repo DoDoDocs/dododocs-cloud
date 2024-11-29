@@ -14,8 +14,7 @@ crash.log
 .vscode/
 
 # Helm pull files (ArgoCD 관련)
-argocd/
-argocd/**
+argo-cd*/
 
 # Helm-generated YAML
 *.release.yaml

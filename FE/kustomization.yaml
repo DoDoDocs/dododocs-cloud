@@ -6,7 +6,6 @@ namespace: frontend
 resources:
   - fe-deployment.yaml
   - fe-service.yaml
-  - fe-application.yaml
   - dododocs-ingress.yaml
 
 images:
