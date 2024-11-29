@@ -27,6 +27,7 @@ argocd/**
 # Secret 파일 제외
 *.secret.yaml
 *secret.yaml
+*/.env
 
 *.pem
 

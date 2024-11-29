@@ -1,0 +1,37 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: backend
+
+resources:
+  - be-deployment.yaml
+  - be-service.yaml
+  - be-application.yaml
+
+images:
+  - name: hyesushim/dododocs-be
+    newTag: latest
+
+configMapGenerator:
+  - name: be-config
+    literals:
+      - REACT_APP_API_BASE_URL=http://be-service.backend.svc.cluster.local
+      - AUTHORIZE_URI=https://github.com/login/oauth/authorize
+      - AWS_REGION=ap-northeast-2
+      - DATABASE_TO_UPPER="FALSE"
+      - DB_CLOSE_DELAY="-1"
+      - DB_CLOSE_ON_EXIT="FALSE"
+      - DB_URL=jdbc:mysql://dododocs-rds.cfk42sa4wzf8.ap-northeast-2.rds.amazonaws.com:3306/dododocs
+      - MODE=MYSQL
+      - REDIRECT_URI=http://dododocs.com/callback/github
+      - TOKEN_URL=https://github.com/login/oauth/access_token
+      - USER_URI=https://api.github.com/user
+      - AI_BASIC_URL=http://ai-service.ai.svc.cluster.local
+  
+secretGenerator:
+  - name: be-secret
+    files:
+      - .env
+
+generatorOptions:
+  disableNameSuffixHash: true
