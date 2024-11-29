@@ -11,11 +11,4 @@ images:
   - name: hyesushim/dododocs-ai
     newTag: latest
 
-secretGenerator:
-  - name: ai-secret
-    files:
-      - .env
-
-generatorOptions:
-  disableNameSuffixHash: true
 

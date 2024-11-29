@@ -26,11 +26,7 @@ configMapGenerator:
       - TOKEN_URL=https://github.com/login/oauth/access_token
       - USER_URI=https://api.github.com/user
       - AI_BASIC_URL=http://ai-service.ai.svc.cluster.local
-  
-secretGenerator:
-  - name: be-secret
-    files:
-      - .env
+
 
 generatorOptions:
   disableNameSuffixHash: true

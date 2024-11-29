@@ -18,11 +18,6 @@ spec:
         image: hyesushim/dododocs-ai:latest
         ports:
           - containerPort: 8000
-        volumeMounts:
-          - name: ai-secret-volume
-            mountPath: /etc/secrets
-            readOnly: true
-      volumes:
-      - name: ai-secret-volume
-        secret:
-          secretName: ai-secret
+        envFrom:
+          - secretRef:
+              name: ai-secret
