@@ -7,4 +7,5 @@ resources:
   - ai-application.yaml
   - be-application.yaml
   - fe-application.yaml
+  - infra-application.yaml
 
