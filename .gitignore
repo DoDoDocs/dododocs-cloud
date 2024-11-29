@@ -1,0 +1,33 @@
+# Terraform-specific
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+*.tfplan
+crash.log
+
+# System files
+.DS_Store
+
+# Editor files
+*.swp
+.vscode/
+
+# Helm pull files (ArgoCD 관련)
+argo-cd*/
+
+# Helm-generated YAML
+*.release.yaml
+*.values.yaml
+
+# 기타 환경 파일
+.kube/
+
+# Secret 파일 제외
+*.secret.yaml
+*secret.yaml
+*/.env
+
+*.pem
+
+
