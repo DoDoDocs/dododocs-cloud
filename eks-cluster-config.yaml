@@ -1,8 +1,8 @@
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 metadata:
-  name: dododocs-cluster
-  region: ap-northeast-2
+  name: ${CLUSTER_NAME}
+  region: ${AWS_REGION}
 
 addons:
   - name: vpc-cni
@@ -20,27 +20,27 @@ iam:
       awsLoadBalancerController: true
 
 vpc:
-  id: vpc-0a2d2976d26679a81
+  id: ${VPC_ID}
   subnets:
     public:
-      ap-northeast-2a:
-        id: subnet-07cad42a01fd0a504
-      ap-northeast-2c:
-        id: subnet-0acd4352067ac9860
+      ${AWS_REGION}a:
+        id: ${PUBLIC_SUBNET_ID_A}
+      ${AWS_REGION}c:
+        id: ${PUBLIC_SUBNET_ID_C}
     private:
-      ap-northeast-2a:
-        id: subnet-049f8707431c60154
-      ap-northeast-2c:
-        id: subnet-0d21d7798093afc53
+      ${AWS_REGION}a:
+        id: ${PRIVATE_SUBNET_ID_A}
+      ${AWS_REGION}c:
+        id: ${PRIVATE_SUBNET_ID_C}
 
 managedNodeGroups:
-  - name: doodocs-node-group
-    instanceType: t3.medium
-    desiredCapacity: 3
-    minSize: 2
-    maxSize: 4
+  - name: ${NODE_GROUP_NAME}
+    instanceType: ${INSTANCE_TYPE}
+    desiredCapacity: ${DESIRED_CAPACITY}
+    minSize: ${MIN_SIZE}
+    maxSize: ${MAX_SIZE}
     iam:
-      instanceRoleARN: arn:aws:iam::730335509885:role/eks-node-role
+      instanceRoleARN: ${NODE_ROLE_ARN}
     privateNetworking: true
     labels:
       role: worker
