@@ -29,6 +29,8 @@ resource "aws_subnet" "public_a" {
 
   tags = {
     Name = "dododocs-public-a"
+    "kubernetes.io/role/elb" = "1"
+    "kubernetes.io/cluster/dododocs-cluster" = "shared"
   }
 }
 
@@ -40,6 +42,8 @@ resource "aws_subnet" "public_c" {
 
   tags = {
     Name = "dododocs-public-c"
+    "kubernetes.io/role/elb" = "1"
+    "kubernetes.io/cluster/dododocs-cluster" = "shared"
   }
 }
 
@@ -51,6 +55,8 @@ resource "aws_subnet" "private_a" {
 
   tags = {
     Name = "dododocs-private-a"
+    "kubernetes.io/role/elb" = "1"
+    "kubernetes.io/cluster/dododocs-cluster" = "shared"
   }
 }
 
@@ -61,6 +67,8 @@ resource "aws_subnet" "private_c" {
 
   tags = {
     Name = "dododocs-private-c"
+    "kubernetes.io/role/elb" = "1"
+    "kubernetes.io/cluster/dododocs-cluster" = "shared"
   }
 }
 
