@@ -7,3 +7,11 @@ resources:
   - nginx-deployment.yaml
   - nginx-service.yaml
   - infra-ingress.yaml
+
+configMapGenerator:
+  - name: nginx-config
+    files:
+      - dododocs-nginx.conf
+
+generatorOptions:
+  disableNameSuffixHash: true
