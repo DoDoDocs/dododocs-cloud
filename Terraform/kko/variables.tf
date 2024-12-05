@@ -128,3 +128,11 @@ variable "s3_public_access" {
   default     = true
 }
 
+variable "eks_tags" {
+  description = "EKS 클러스터에 사용할 태그 값입니다."
+  type        = map(string)
+  default     = {
+    "kubernetes.io/role/elb"           = "1"
+    "kubernetes.io/cluster/dododocs-cluster" = "shared"
+  }
+}

@@ -15,6 +15,10 @@ module "public_subnets" {
   availability_zones = var.availability_zones
   name               = var.public_subnet_name
   public             = true
+  additional_tags = {
+    "kubernetes.io/role/elb"                 = "1"
+    "kubernetes.io/cluster/dododocs-cluster" = "shared"
+  }
 }
 
 module "private_subnets" {
@@ -23,6 +27,9 @@ module "private_subnets" {
   subnet_cidrs       = var.private_subnet_cidrs
   availability_zones = var.availability_zones
   name               = var.private_subnet_name
+  additional_tags = {
+    "kubernetes.io/cluster/dododocs-cluster" = "shared"
+  }
 }
 
 module "igw" {
@@ -88,9 +95,14 @@ module "vpc_endpoints" {
 }
 
 module "s3_bucket" {
-  bucket_name   = var.bucket_name
   source        = "./modules/s3"
+  bucket_name   = var.bucket_name
   public_access = var.s3_public_access
   environment   = var.environment
   vpc_endpoint  = module.vpc_endpoints.s3_endpoint
+}
+
+module "kms" {
+  source = "./modules/kms"
+
 }

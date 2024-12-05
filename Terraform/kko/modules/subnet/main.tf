@@ -5,7 +5,10 @@ resource "aws_subnet" "subnet" {
   availability_zone       = var.availability_zones[count.index]
   map_public_ip_on_launch = var.public
 
-  tags = {
-    Name = "${var.name}-${substr(var.availability_zones[count.index], -1, 1)}"
-  }
+  tags = merge(
+    {
+      Name = "${var.name}-${substr(var.availability_zones[count.index], -1, 1)}"
+    },
+    var.additional_tags
+  )
 }

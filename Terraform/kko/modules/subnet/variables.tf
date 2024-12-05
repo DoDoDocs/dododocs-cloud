@@ -26,3 +26,9 @@ variable "public" {
   type        = bool
   default     = false
 }
+
+variable "additional_tags" {
+  description = "Additional tags to apply to the subnets"
+  type        = map(string)
+  default     = {}
+}
