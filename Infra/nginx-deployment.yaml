@@ -22,7 +22,12 @@ spec:
           - name: nginx-config-volume
             mountPath: /etc/nginx/nginx.conf
             subPath: nginx.conf
+            readOnly: true
+            
       volumes:
         - name: nginx-config-volume
           configMap:
             name: nginx-config
+            items:
+              - key: dododocs-nginx.conf
+                path: nginx.conf
