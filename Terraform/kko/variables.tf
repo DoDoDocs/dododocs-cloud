@@ -128,15 +128,6 @@ variable "s3_public_access" {
   default     = true
 }
 
-variable "eks_tags" {
-  description = "EKS 클러스터에 사용할 태그 값입니다."
-  type        = map(string)
-  default = {
-    "kubernetes.io/role/elb"                 = "1"
-    "kubernetes.io/cluster/dododocs-cluster" = "shared"
-  }
-}
-
 ### rds
 variable "engine" {
   description = "Database engine (e.g., mysql, postgres)"
@@ -178,34 +169,8 @@ variable "db_port" {
   default     = "3306"
 }
 
-variable "vpc_security_group_ids" {
-  description = "VPC Security Groups associated with the database"
-  type        = list(string)
-  default     = []
-}
 
-variable "subnet_ids" {
-  description = "Subnets for the RDS DB Subnet Group"
-  type        = list(string)
-  default     = []
-}
 
-variable "tags" {
-  description = "Tags to associate with the database"
-  type        = map(string)
-  default     = {}
-}
 
-variable "parameters" {
-  description = "List of database parameters"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "options" {
-  description = "List of database options"
-  type        = list(map(string))
-  default     = []
-}
 
 
