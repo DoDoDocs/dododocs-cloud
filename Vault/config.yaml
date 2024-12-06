@@ -1,0 +1,38 @@
+global:
+  namespace: "vault"
+
+server:
+  dataStorage:
+    enabled: false 
+
+standalone:
+  enabled: true
+  config: |-
+    storage "s3" {
+      region = "ap-northeast-2"  
+      # bucket = my_buckt
+      bucket = <buckt_name>
+    }
+
+    seal "awskms" {
+      region     = "ap-northeast-2"
+      # kms_key_id = "arn..."
+      kms_key_id = "key_id" 
+    }
+
+    listener "tcp" {
+      address = "[::]:8200"
+      cluster_address = "[::]:8201"
+      tls_disable = true
+    }
+
+    ui = true
+
+ha:
+  enabled: false
+
+ui:
+  enabled: true
+  serviceType: "ClusterIP"
+  externalPort: 8200
+  targetPort: 8200
