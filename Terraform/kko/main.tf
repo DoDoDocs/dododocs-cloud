@@ -1,7 +1,3 @@
-provider "aws" {
-  region = var.region
-}
-
 module "vpc" {
   source     = "./modules/vpc"
   cidr_block = var.vpc_cidr
@@ -104,7 +100,7 @@ module "s3_bucket" {
 
 module "kms_vault" {
   source              = "./modules/kms"
-  key_alias           = "vault-auto-unseal"
+  key_alias           = "vault-auto-unseal-1"
   key_description     = "KMS key for Vault auto unseal"
   enable_key_rotation = true
   tags = {
