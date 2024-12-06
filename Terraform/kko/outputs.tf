@@ -10,6 +10,12 @@ output "public_subnet_ids" {
   value       = module.public_subnets.subnet_ids
 }
 
+# private Subnets Outputs
+output "private_subnet_ids" {
+  description = "The IDs of the private subnets"
+  value       = module.private_subnets.subnet_ids
+}
+
 # Internet Gateway Outputs
 output "internet_gateway_id" {
   description = "The ID of the Internet Gateway"
@@ -53,4 +59,13 @@ output "private_route_table_ids" {
 output "s3_bucket_arn" {
   description = "The ARN of the S3 bucket"
   value       = module.s3_bucket.s3_bucket_arn
+}
+
+##kms
+output "kms_key_id" {
+  value = module.kms_vault.key_id
+}
+
+output "kms_key_arn" {
+  value = module.kms_vault.key_arn
 }

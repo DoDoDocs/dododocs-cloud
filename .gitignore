@@ -4,6 +4,7 @@
 *.tfstate.backup
 *.tfvars
 *.tfplan
+terraform/kko/output.json
 crash.log
 
 # System files
