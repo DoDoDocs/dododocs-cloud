@@ -7,7 +7,7 @@ spec:
   project: dododocs
   source:
     repoURL: https://github.com/DoDoDocs/dododocs-cloud.git
-    targetRevision: develop
+    targetRevision: main
     path: argocd
     kustomize:
       namePrefix: ''
