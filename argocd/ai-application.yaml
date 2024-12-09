@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ai
-  namespace: myargocd
+  namespace: argocd
   annotations:
     argocd-image-updater.argoproj.io/image-list: hyeushim/dododocs-ai
     argocd-image-updater.argoproj.io/write-back-method: kustomize

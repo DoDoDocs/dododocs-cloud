@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: infra
-  namespace: myargocd
+  namespace: argocd
 spec:
   project: dododocs
   source:
