@@ -15,7 +15,7 @@ crash.log
 
 # Helm pull files
 argo-cd*/
-kube-prometheus-stack-*/
+kube-prometheus-stack-*/ 
 
 # Helm-generated YAML
 *.release.yaml
