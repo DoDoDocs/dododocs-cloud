@@ -13,8 +13,9 @@ crash.log
 *.swp
 .vscode/
 
-# Helm pull files (ArgoCD 관련)
+# Helm pull files
 argo-cd*/
+kube-prometheus-stack-*/
 
 # Helm-generated YAML
 *.release.yaml
