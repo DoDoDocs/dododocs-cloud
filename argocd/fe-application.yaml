@@ -4,14 +4,15 @@ metadata:
   name: frontend
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: hyeushim/dododocs-fe
+    argocd-image-updater.argoproj.io/image-list: fe_image=hyeushim/dododocs-fe
+    argocd-image-updater.argoproj.io/fe_image.update-strategy: digest
     argocd-image-updater.argoproj.io/write-back-method: git
-    argocd-image-updater.argoproj.io/update-strategy: latest
+    argocd-image-updater.argoproj.io/write-back-target: kustomization
 spec:
   project: dododocs
   source:
     repoURL: https://github.com/DoDoDocs/dododocs-cloud.git
-    targetRevision: main
+    targetRevision: feature/#8
     path: ./FE
   destination:
     server: https://kubernetes.default.svc
