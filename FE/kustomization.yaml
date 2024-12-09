@@ -10,7 +10,7 @@ resources:
 
 images:
   - name: hyesushim/dododocs-fe
-    newTag: latest
+    newTag: sha256:50a3b7309527d3c923ee2e514a71580305545121ad68710979a1d051226230d9
 
 configMapGenerator:
   - name: fe-config

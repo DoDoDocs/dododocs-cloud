@@ -9,7 +9,7 @@ resources:
 
 images:
   - name: hyesushim/dododocs-be
-    newTag: latest
+    newTag: sha256:c7efebbd1e71727d888e0d0d62abbc40dd532900b2551b622cd45585892f9d29
 
 configMapGenerator:
   - name: be-config
