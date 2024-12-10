@@ -4,7 +4,7 @@ metadata:
   name: backend
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: be_image=hyeushim/dododocs-be
+    argocd-image-updater.argoproj.io/image-list: be_image=hyesushim/dododocs-be
     argocd-image-updater.argoproj.io/be_image.update-strategy: digest
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/write-back-target: kustomization

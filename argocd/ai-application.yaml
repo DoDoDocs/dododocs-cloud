@@ -4,7 +4,7 @@ metadata:
   name: ai
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: ai_image=hyeushim/dododocs-ai
+    argocd-image-updater.argoproj.io/image-list: ai_image=hyesushim/dododocs-ai
     argocd-image-updater.argoproj.io/ai_image.update-strategy: digest
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/write-back-target: kustomization
