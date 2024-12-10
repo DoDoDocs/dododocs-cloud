@@ -35,11 +35,9 @@ spec:
         envFrom:
         - configMapRef:
             name: be-config 
-        # - secretRef:
-        #     name: be-secret
 ---
 apiVersion: apps/v1
 kind: ServiceAccount
 metadata:
-  name: 
-  namespace: backend-sa
+  name: backend-sa
+  namespace: backend
