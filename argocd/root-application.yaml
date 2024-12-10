@@ -2,19 +2,19 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: applications
-  namespace: myargocd
+  namespace: argocd
 spec:
   project: dododocs
   source:
     repoURL: https://github.com/DoDoDocs/dododocs-cloud.git
-    targetRevision: develop
+    targetRevision: main
     path: argocd
     kustomize:
       namePrefix: ''
       nameSuffix: ''
   destination:
     server: https://kubernetes.default.svc
-    namespace: myargocd
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
