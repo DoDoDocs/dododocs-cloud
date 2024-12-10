@@ -8,10 +8,11 @@ module "db" {
   instance_class    = var.instance_class
   allocated_storage = var.allocated_storage
 
-  db_name  = var.db_name
-  username = var.username
-  password = ""
-  port     = "3306"
+  db_name                     = var.db_name
+  username                    = var.username
+  manage_master_user_password = false
+  password                    = ""
+  port                        = "3306"
 
   iam_database_authentication_enabled = true
 
