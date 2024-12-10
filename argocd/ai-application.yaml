@@ -5,14 +5,15 @@ metadata:
   namespace: argocd
   annotations:
     argocd-image-updater.argoproj.io/image-list: ai_image=hyesushim/dododocs-ai
-    argocd-image-updater.argoproj.io/ai_image.update-strategy: digest
+    argocd-image-updater.argoproj.io/ai_image.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/ai_image.tag-pattern: "^[a-f0-9]{7}$" 
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/write-back-target: kustomization
 spec:
   project: dododocs
   source:
     repoURL: https://github.com/DoDoDocs/dododocs-cloud.git
-    targetRevision: feature/#8
+    targetRevision: main
     path: ./AI
   destination:
     server: https://kubernetes.default.svc

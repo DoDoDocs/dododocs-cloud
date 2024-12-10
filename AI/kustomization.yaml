@@ -9,5 +9,5 @@ resources:
 
 images:
   - name: hyesushim/dododocs-ai
-    digest: sha256:4487c28081ad6a3c381040373cf181565d9df18c42c64886d408f129d7068a72
+    newTag: latest
 
