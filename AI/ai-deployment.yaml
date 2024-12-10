@@ -12,12 +12,30 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: ai-deploy
+      annotations:
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/role: 'ai-role'
+        vault.hashicorp.com/agent-pre-populate-only: 'true'
+        vault.hashicorp.com/agent-inject-secret-database-config: 'ai/prod'
+        vault.hashicorp.com/agent-inject-template-database-config: |
+          {{ with secret "ai/prod" }}
+          {{- range $key, $value := .Data.data }}
+            export {{ $key }}="{{ $value }}"
+          {{- end }}
+          {{- end }}
     spec:
+      serviceAccountName: ai-sa
       containers:
       - name: ai-app
         image: hyesushim/dododocs-ai:latest
+        command: ["/bin/bash"]
+        args:
+          ['-c', '. /vault/secrets/database-config && env > /vault/secrets/test && tail -f /dev/null']
         ports:
           - containerPort: 8000
-        envFrom:
-          - secretRef:
-              name: ai-secret
+---
+apiVersion: apps/v1
+kind: ServiceAccount
+metadata:
+  name: ai-sa
+  namespace: ai

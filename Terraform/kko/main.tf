@@ -1,7 +1,3 @@
-provider "aws" {
-  region = var.region
-}
-
 module "vpc" {
   source     = "./modules/vpc"
   cidr_block = var.vpc_cidr
@@ -16,8 +12,8 @@ module "public_subnets" {
   name               = var.public_subnet_name
   public             = true
   additional_tags = {
-    "kubernetes.io/role/elb"                 = "1"
-    "kubernetes.io/cluster/dododocs-cluster" = "shared"
+    "kubernetes.io/role/elb"                     = "1"
+    "kubernetes.io/cluster/dododocs-eks-cluster" = "shared"
   }
 }
 
@@ -28,7 +24,7 @@ module "private_subnets" {
   availability_zones = var.availability_zones
   name               = var.private_subnet_name
   additional_tags = {
-    "kubernetes.io/cluster/dododocs-cluster" = "shared"
+    "kubernetes.io/cluster/dododocs-eks-cluster" = "shared"
   }
 }
 
@@ -102,7 +98,24 @@ module "s3_bucket" {
   vpc_endpoint  = module.vpc_endpoints.s3_endpoint
 }
 
-module "kms" {
-  source = "./modules/kms"
+module "kms_vault" {
+  source              = "./modules/kms"
+  key_alias           = "vault-auto-unseal-1"
+  key_description     = "KMS key for Vault auto unseal"
+  enable_key_rotation = true
+  tags = {
+    Environment = "prod"
+    Project     = "vault-auto-unseal"
+  }
+}
 
+module "rds" {
+  source                 = "./modules/rds"
+  name                   = var.name
+  instance_class         = var.instance_class
+  allocated_storage      = var.allocated_storage
+  vpc_security_group_ids = [module.sg.security_group_id]
+  port                   = var.db_port
+  subnet_ids             = module.private_subnets.subnet_ids
+  username               = "admin"
 }

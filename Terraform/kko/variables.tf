@@ -128,11 +128,49 @@ variable "s3_public_access" {
   default     = true
 }
 
-variable "eks_tags" {
-  description = "EKS 클러스터에 사용할 태그 값입니다."
-  type        = map(string)
-  default     = {
-    "kubernetes.io/role/elb"           = "1"
-    "kubernetes.io/cluster/dododocs-cluster" = "shared"
-  }
+### rds
+variable "engine" {
+  description = "Database engine (e.g., mysql, postgres)"
+  type        = string
+  default     = "mysql"
 }
+
+variable "engine_version" {
+  description = "Version of the database engine"
+  type        = string
+  default     = "8.0"
+}
+
+variable "instance_class" {
+  description = "Instance class for the database"
+  type        = string
+}
+
+variable "allocated_storage" {
+  description = "Allocated storage size in GB"
+  type        = number
+}
+
+variable "db_name" {
+  description = "Name of the database"
+  type        = string
+  default     = "dododocs"
+}
+
+variable "username" {
+  description = "Master username for the database"
+  type        = string
+  default     = "admin"
+}
+
+variable "db_port" {
+  description = "Port number for the database"
+  type        = string
+  default     = "3306"
+}
+
+
+
+
+
+
