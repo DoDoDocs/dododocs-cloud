@@ -30,7 +30,12 @@ spec:
         image: hyesushim/dododocs-be:latest
         command: ["/bin/bash"]
         args:
-          ['-c', '. /vault/secrets/database-config && env > /vault/secrets/test && tail -f /dev/null']
+          - "-c"
+          - |
+            . /vault/secrets/database-config
+            env > /vault/secrets/test
+            env
+            exec java -jar /home/gradle/project/build/libs/dododocs-0.0.1-SNAPSHOT.jar
         ports:
           - containerPort: 8080
         envFrom:

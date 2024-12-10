@@ -30,7 +30,12 @@ spec:
         image: hyesushim/dododocs-ai:latest
         command: ["/bin/bash"]
         args:
-          ['-c', '. /vault/secrets/database-config && env > /vault/secrets/test && tail -f /dev/null']
+          - "-c"
+          - |
+            . /vault/secrets/database-config
+            env > /vault/secrets/test
+            env
+            exec uvicorn ktb_server:app --host 0.0.0.0 --port 8000 --log-level debug --timeout-keep-alive 180
         ports:
           - containerPort: 8000
 ---
