@@ -5,7 +5,8 @@ metadata:
   namespace: argocd
   annotations:
     argocd-image-updater.argoproj.io/image-list: fe_image=hyesushim/dododocs-fe
-    argocd-image-updater.argoproj.io/fe_image.update-strategy: digest
+    argocd-image-updater.argoproj.io/fe_image.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/fe_image.tag-pattern: "^[a-f0-9]{7}$" 
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/write-back-target: kustomization
 spec:
