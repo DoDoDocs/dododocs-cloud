@@ -24,6 +24,7 @@ spec:
           {{- end }}
           {{- end }}
     spec:
+      serviceAccountName: backend-sa
       containers:
       - name: be-app
         image: hyesushim/dododocs-be:latest

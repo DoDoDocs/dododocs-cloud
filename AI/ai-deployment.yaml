@@ -24,6 +24,7 @@ spec:
           {{- end }}
           {{- end }}
     spec:
+      serviceAccountName: ai-sa
       containers:
       - name: ai-app
         image: hyesushim/dododocs-ai:latest
