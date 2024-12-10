@@ -40,7 +40,7 @@ variable "db_name" {
 variable "username" {
   description = "Master username for the database"
   type        = string
-  default     = "admin"
+  default     = "root"
 }
 
 variable "port" {

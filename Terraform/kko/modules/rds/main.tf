@@ -10,6 +10,7 @@ module "db" {
 
   db_name  = var.db_name
   username = var.username
+  password = ""
   port     = "3306"
 
   iam_database_authentication_enabled = true

@@ -117,4 +117,5 @@ module "rds" {
   vpc_security_group_ids = [module.sg.security_group_id]
   port                   = var.db_port
   subnet_ids             = module.private_subnets.subnet_ids
+  username               = "admin"
 }
