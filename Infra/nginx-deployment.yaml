@@ -31,20 +31,25 @@ spec:
           - "-c"
           - |
             . /vault/secrets/nginx-config
+            env
+            sed 's|\$(ALLOWED_IP)|'"${ALLOWED_IP}"'|g' /user/nginx.conf > /etc/nginx/nginx.conf
+            nginx -t
+            nginx -g "daemon off;"
+        ports:
         ports:
         - containerPort: 80
         volumeMounts:
           - name: nginx-config-volume
-            mountPath: /etc/nginx/nginx.conf
+            mountPath: /user/nginx.conf #수정부분
             subPath: nginx.conf
             readOnly: true
             
       volumes:
         - name: nginx-config-volume
           configMap:
-            name: nginx-config
+            name: test-config  #수정부분
             items:
-              - key: dododocs-nginx.conf
+              - key: nginx.conf  #수정부분
                 path: nginx.conf
 
 ---
