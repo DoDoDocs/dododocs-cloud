@@ -12,15 +12,15 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: nginx-deploy
-      # annotations:
-      #   vault.hashicorp.com/agent-inject: 'true'
-      #   vault.hashicorp.com/role: 'nginx-role'
-      #   vault.hashicorp.com/agent-pre-populate-only: 'true'
-      #   vault.hashicorp.com/agent-inject-secret-database-config: 'infra/nginx-config'
-      #   vault.hashicorp.com/agent-inject-template-nginx-config: |
-      #     {{ with secret "infra/nginx-config" -}}
-      #       export ALLOWED_IP="{{ .Data.data.ALLOWED_IP }}"
-      #     {{- end }}
+      annotations:
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/role: 'nginx-role'
+        vault.hashicorp.com/agent-pre-populate-only: 'true'
+        vault.hashicorp.com/agent-inject-secret-database-config: 'infra/nginx-config'
+        vault.hashicorp.com/agent-inject-template-nginx-config: |
+          {{ with secret "infra/nginx-config" -}}
+            export ALLOWED_IP="{{ .Data.data.ALLOWED_IP }}"
+          {{- end }}
     spec:
       serviceAccountName: nginx-sa
       containers:
