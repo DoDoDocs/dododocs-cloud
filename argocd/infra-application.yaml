@@ -9,6 +9,8 @@ spec:
     repoURL: https://github.com/DoDoDocs/dododocs-cloud.git
     targetRevision: main
     path: ./Infra
+    plugin:
+      name: argocd-vault-plugin
   destination:
     server: https://kubernetes.default.svc
     namespace: infra
