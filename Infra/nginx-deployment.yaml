@@ -26,8 +26,9 @@ spec:
       containers:
       - name: nginx
         image: nginx:latest
-        command: ["/bin/bash", "-c"]
+        command: ["/bin/bash"]
         args:
+          - "-c"
           - |
             . /vault/secrets/nginx-config
         ports:
