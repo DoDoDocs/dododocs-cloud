@@ -6,7 +6,7 @@ resources:
 - be-service.yaml
 images:
 - name: hyesushim/dododocs-be
-  newTag: "112e177"
+  newTag: a3a9a41
 configMapGenerator:
 - name: be-config
   literals:
