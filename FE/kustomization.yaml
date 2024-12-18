@@ -4,13 +4,13 @@ namespace: frontend
 resources:
 - fe-deployment.yaml
 - fe-service.yaml
-- fe-ingress.yaml
+# - fe-ingress.yaml
 images:
 - name: hyesushim/dododocs-fe
   newTag: 13ee439
 configMapGenerator:
 - name: fe-config
   literals:
-  - REACT_APP_API_BASE_URL=http://be-service.backend.svc.cluster.local
+  - REACT_APP_API_BASE_URL=/
 generatorOptions:
   disableNameSuffixHash: true
