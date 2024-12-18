@@ -102,7 +102,7 @@ rbac:
 # Configuration is rendered with `tpl` function, therefore you can use any Helm variables and/or templates here
 config: |-
   # This is the default configuration for prometheus-cloudwatch-exporter
-  region: eu-west-1
+  region: ap-northeast-2
   period_seconds: 240
   metrics:
   - aws_namespace: AWS/ELB
@@ -117,8 +117,10 @@ config: |-
 
   - aws_namespace: AWS/ELB
     aws_metric_name: RequestCount
-    aws_dimensions: [AvailabilityZone, LoadBalancerName]
+    aws_dimensions: [LoadBalancerName]
     aws_statistics: [Sum]
+    aws_dimension_select:
+      LoadBalancer: ["app/k8s-sharedalb-842d9b7948"]
 
   - aws_namespace: AWS/ELB
     aws_metric_name: Latency

@@ -6,7 +6,7 @@
 *.tfplan
 terraform/kko/output.json
 crash.log
-
+monitoring/*
 # System files
 .DS_Store
 
