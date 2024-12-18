@@ -36,7 +36,6 @@ spec:
             nginx -t
             nginx -g "daemon off;"
         ports:
-        ports:
         - containerPort: 80
         volumeMounts:
           - name: nginx-config-volume
