@@ -3,21 +3,12 @@ kind: Application
 metadata:
   name: infra
   namespace: argocd
-  annotations:
-    avp.kubernetes.io/path: "secret/infra/tls"
 spec:
   project: dododocs
   source:
     repoURL: https://github.com/DoDoDocs/dododocs-cloud.git
-    targetRevision: Feature/#28
+    targetRevision: main
     path: ./Infra
-    plugin:
-      name: argocd-vault-plugin
-      env:
-       - name: AVP_TYPE
-         value: "kv"
-       - name: AVP_VERSION
-         value: "v1"
   destination:
     server: https://kubernetes.default.svc
     namespace: infra
