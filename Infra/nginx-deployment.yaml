@@ -47,9 +47,9 @@ spec:
       volumes:
         - name: nginx-config-volume
           configMap:
-            name: test-config  #수정부분
+            name: nginx-config  #수정부분
             items:
-              - key: nginx.conf  #수정부분
+              - key: dododocs-nginx.conf #수정부분
                 path: nginx.conf
 
 ---
