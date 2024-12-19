@@ -7,7 +7,7 @@ resources:
 # - be-ingress.yaml
 images:
 - name: hyesushim/dododocs-be
-  newTag: 1ddca5b
+  newTag: fabc772
 configMapGenerator:
 - name: be-config
   literals:
