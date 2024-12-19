@@ -7,7 +7,7 @@ resources:
 # - fe-ingress.yaml
 images:
 - name: hyesushim/dododocs-fe
-  newTag: "4846507"
+  newTag: 06493bf
 configMapGenerator:
 - name: fe-config
   literals:
