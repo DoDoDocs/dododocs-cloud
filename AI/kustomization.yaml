@@ -6,4 +6,4 @@ resources:
 - ai-service.yaml
 images:
 - name: hyesushim/dododocs-ai
-  newTag: a421de7
+  newTag: 1c9abbc
