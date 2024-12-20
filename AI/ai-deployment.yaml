@@ -24,7 +24,7 @@ spec:
           {{- end }}
           {{- end }}
     spec:
-      serviceAccountName: ai-efs-sa
+      serviceAccountName: ai-sa
       containers:
       - name: ai-app
         image: hyesushim/dododocs-ai:latest
@@ -51,6 +51,8 @@ kind: ServiceAccount
 metadata:
   name: ai-sa
   namespace: ai
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::730335509885:role/AmazonEKS_EFS_CSI_DriverRole
 
 ---
 apiVersion: v1
