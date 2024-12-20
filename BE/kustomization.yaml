@@ -17,7 +17,7 @@ configMapGenerator:
   - DB_CLOSE_DELAY="-1"
   - DB_CLOSE_ON_EXIT="FALSE"
   - MODE=MYSQL
-  - REDIRECT_URI=http://localhost:3000/callback/github
+  - REDIRECT_URI=https://dododocs.com/callback/github
   - TOKEN_URL=https://github.com/login/oauth/access_token
   - USER_URI=https://api.github.com/user
   - AI_BASIC_URL=http://ai.dododocs.com
