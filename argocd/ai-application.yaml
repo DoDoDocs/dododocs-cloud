@@ -13,7 +13,7 @@ spec:
   project: dododocs
   source:
     repoURL: https://github.com/DoDoDocs/dododocs-cloud.git
-    targetRevision: chat_server
+    targetRevision: main
     path: ./AI
   destination:
     server: https://kubernetes.default.svc
