@@ -9,7 +9,7 @@ spec:
   resources:
     requests:
       storage: 5Gi
-  volumeName: efs-pvzw
+  volumeName: efs-pv
 ---
 apiVersion: v1
 kind: PersistentVolume
