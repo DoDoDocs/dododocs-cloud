@@ -51,16 +51,3 @@ kind: ServiceAccount
 metadata:
   name: ai-sa
   namespace: ai
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: efs-claim
-  namespace: ai
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: efs-sc
-  resources:
-    requests:
-      storage: 50Gi
