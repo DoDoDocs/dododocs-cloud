@@ -38,9 +38,29 @@ spec:
             exec python lambda_chat.py
         ports:
           - containerPort: 5001
+        volumeMounts:
+          - name: efs-storage
+            mountPath: /mnt/chroma_DB
+      volumes:
+        - name: efs-storage
+          persistentVolumeClaim:
+            claimName: efs-claim
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: ai-sa
   namespace: ai
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-claim
+  namespace: ai
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: efs-sc
+  resources:
+    requests:
+      storage: 50Gi
