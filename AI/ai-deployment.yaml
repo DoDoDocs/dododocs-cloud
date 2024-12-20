@@ -64,3 +64,20 @@ spec:
     requests:
       storage: 5Gi
   volumeName: efs-pv
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: efs-pv
+spec:
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: efs-sc
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: fs-0ddf6dc34bb06349c::fsap-06637761fdd9a4b18
