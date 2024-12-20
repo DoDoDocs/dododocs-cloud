@@ -51,8 +51,6 @@ kind: ServiceAccount
 metadata:
   name: ai-sa
   namespace: ai
-  annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::730335509885:role/AmazonEKS_EFS_CSI_DriverRole
 
 ---
 apiVersion: v1
@@ -67,3 +65,5 @@ spec:
     requests:
       storage: 5Gi
   storageClassName: efs-sc
+
+
