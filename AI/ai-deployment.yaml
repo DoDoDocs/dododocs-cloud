@@ -24,7 +24,7 @@ spec:
           {{- end }}
           {{- end }}
     spec:
-      serviceAccountName: ai-sa
+      serviceAccountName: ai-efs-sa
       containers:
       - name: ai-app
         image: hyesushim/dododocs-ai:latest
@@ -38,16 +38,30 @@ spec:
             exec python lambda_chat.py
         ports:
           - containerPort: 5001
-        volumeMounts:
+        volumeMounts: 
           - name: efs-storage
             mountPath: /mnt/chroma_DB
       volumes:
         - name: efs-storage
           persistentVolumeClaim:
-            claimName: efs-claim
+            claimName: efs-claim 
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: ai-sa
   namespace: ai
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-claim
+  namespace: ai
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: efs-sc
