@@ -41,8 +41,8 @@ spec:
         envFrom:
         - configMapRef:
             name: be-config 
-        - secretRef:
-            name: be-secret
+        # - secretRef:
+        #     name: be-secret
 ---
 apiVersion: v1
 kind: ServiceAccount
