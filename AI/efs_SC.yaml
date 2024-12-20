@@ -4,6 +4,7 @@ metadata:
   name: efs-sc
 provisioner: efs.csi.aws.com
 parameters:
-  provisioningMode: efs-ap
   fileSystemId: fs-0ddf6dc34bb06349c
   directoryPerms: "777"
+  basePath: "/ai"
+  provisioningMode: efs-ap
