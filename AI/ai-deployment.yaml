@@ -35,7 +35,7 @@ spec:
             . /vault/secrets/database-config
             env > /vault/secrets/test
             env
-            exec uvicorn ktb_server:app --host 0.0.0.0 --port 5001 --log-level debug --timeout-keep-alive 180
+            exec python lambda_chat.py
         ports:
           - containerPort: 5001
 ---
