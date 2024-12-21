@@ -20,7 +20,7 @@ spec:
         vault.hashicorp.com/agent-inject-template-database-config: |
           {{ with secret "ai/prod" }}
           {{- range $key, $value := .Data.data }}
-            export {{ $key }}="{{ $value }}"
+            export {{ $key }}="{{ trimSuffix "\n" $value }}"
           {{- end }}
           {{- end }}
     spec:
