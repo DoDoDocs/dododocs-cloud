@@ -18,7 +18,7 @@ spec:
   storageClassName: efs-sc
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-0ddf6dc34bb06349c::	fsap-06637761fdd9a4b18
+    volumeHandle: fs-0ddf6dc34bb06349c::fsap-06637761fdd9a4b18
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
