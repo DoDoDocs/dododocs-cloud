@@ -1,15 +1,8 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
 metadata:
-  name: efs-claim
-  namespace: ai
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 5Gi
-  volumeName: efs-pv
+  name: efs-sc
+provisioner: efs.csi.aws.com
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -25,7 +18,19 @@ spec:
   storageClassName: efs-sc
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-0ddf6dc34bb06349c::fsap-06637761fdd9a4b18
+    volumeHandle: fs-0ddf6dc34bb06349c::	fsap-06637761fdd9a4b18
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-claim
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: efs-sc
+  resources:
+    requests:
+      storage: 5Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -68,10 +73,10 @@ spec:
         ports:
           - containerPort: 5001
         volumeMounts: 
-          - name: efs-storage
+          - name: efs-volume
             mountPath: /mnt/chroma_DB
       volumes:
-        - name: efs-storage
+        - name: efs-volume
           persistentVolumeClaim:
             claimName: efs-claim
 ---
