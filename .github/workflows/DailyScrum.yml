@@ -1,8 +1,8 @@
 name: Discord DailyScrum alarm
 
 on:
-  schedule:
-    - cron: "10 23 * * *" 
+  # schedule:
+  #   - cron: "10 23 * * *" 
   workflow_dispatch:  # 수동 실행 추가
 
 jobs:
