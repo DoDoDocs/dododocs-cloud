@@ -1,0 +1,5 @@
+---
+custom_roles:
+  - common
+  - docker
+  - cloudwatch
